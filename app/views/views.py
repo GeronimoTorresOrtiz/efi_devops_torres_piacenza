@@ -2,12 +2,17 @@
 from flask import (
     jsonify, 
     request,
+    render_template
     
 )
 from flask.views import MethodView
 from app import app,db 
 from app.models.models import (Usuario,Post,Comentario,Categoria)
 from app.schemas.schemas import (UsuarioSchema, CategoriaSchema, PostSchema, ComentarioSchema)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 class UsuarioView(MethodView):
     def get(self, usuario_id=None):
